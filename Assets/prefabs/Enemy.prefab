@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 2709101037422539914}
   - component: {fileID: 7561676308289197229}
   - component: {fileID: 1630482957158647782}
-  - component: {fileID: 6105394472983728676}
   - component: {fileID: 4000605101902550829}
   - component: {fileID: 3927426642969260030}
   - component: {fileID: 7778481477834077982}
@@ -110,25 +109,12 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6105394472983728676
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2657215744797454005}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8ccdc252ff98fe409ee1015378fb1bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RespawnAfterDeath
-  respawnPoint: {fileID: 0}
 --- !u!114 &4000605101902550829
 MonoBehaviour:
   m_ObjectHideFlags: 0

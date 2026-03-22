@@ -3,7 +3,6 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     public GameObject thingToSpawn;
-    public float duration = 2f;
     public Transform[] spawnPoints;
 
     void Start()

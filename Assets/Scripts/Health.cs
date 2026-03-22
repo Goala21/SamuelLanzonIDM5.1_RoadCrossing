@@ -1,8 +1,10 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour
 {
+    public GameObject gameOverScreen;
     public int totalHealth = 1;
     public TMP_Text healthText;
     public void TakeDamage()
@@ -13,8 +15,12 @@ public class Health : MonoBehaviour
         if (totalHealth <= 0)
         {
             Debug.Log("Game Over");
-            Destroy(gameObject);
-            
+            gameOverScreen.SetActive(true);
+               
         }
     }
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(0);
+    }   
 }

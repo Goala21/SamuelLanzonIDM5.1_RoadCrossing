@@ -10,6 +10,8 @@ public class KillPlayer : MonoBehaviour
         {
             other.gameObject.GetComponent<Health>().TakeDamage();
             
+                
+            
         }
         
 

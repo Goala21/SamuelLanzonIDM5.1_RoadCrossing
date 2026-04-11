@@ -9,7 +9,7 @@ public class Score : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Collectible"))
+        if (other.CompareTag("Collectible") && gameObject.CompareTag("Player"))
         {
             
             value = value + 1;

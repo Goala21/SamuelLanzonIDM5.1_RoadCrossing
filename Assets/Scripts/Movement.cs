@@ -26,7 +26,7 @@ public class Movement : MonoBehaviour
         
         if (Keyboard.current.spaceKey.isPressed && isGrounded)
         {
-            Myrigidbody.AddForce(transform.forward * 30 + transform.up * 30, ForceMode.Impulse);
+            Myrigidbody.AddForce(transform.forward * 60 + transform.up * 50, ForceMode.Impulse);
             isGrounded = false;
         }
         

@@ -12,11 +12,13 @@ public class Health : MonoBehaviour
         totalHealth --;
         healthText.text = $"Health: {totalHealth:0}";
         
+        GetComponent<Score>().CheckpointRespawn();
+        
         if (totalHealth <= 0)
         {
             Debug.Log("Game Over");
             gameOverScreen.SetActive(true);
-               
+            
         }
     }
     public void RestartGame()

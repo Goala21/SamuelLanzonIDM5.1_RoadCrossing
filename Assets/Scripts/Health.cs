@@ -18,6 +18,7 @@ public class Health : MonoBehaviour
         {
             Debug.Log("Game Over");
             gameOverScreen.SetActive(true);
+            Time.timeScale = 0;
             
         }
     }

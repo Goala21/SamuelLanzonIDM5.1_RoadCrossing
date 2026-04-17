@@ -8,23 +8,32 @@ public class Score : MonoBehaviour
     public TMP_Text scoreText;
     private Vector3 checkpointPosition;
     private Quaternion checkpointRotation;
+    private EnemySpawner enemySpawner;
+
+    void Start()
+    {
+        enemySpawner = FindObjectOfType<EnemySpawner>(); // Finds it automatically!
+    }
 
     public void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Collectible") && gameObject.CompareTag("Player"))
         {
-            
             value = value + 1;
             Debug.Log("Score increased to" + value);
             scoreText.text = $"score: {value:0}";
             
             checkpointPosition = other.transform.position;
             checkpointRotation = other.transform.rotation;
+            
+            if (enemySpawner != null)
+            {
+                enemySpawner.isSpawning = true;
+            }
         }    
     }
 
     public void CheckpointRespawn()
-
     {
         Rigidbody rigidBody = GetComponent<Rigidbody>();
         if (rigidBody != null)
@@ -35,6 +44,5 @@ public class Score : MonoBehaviour
 
         transform.position = checkpointPosition;
         transform.rotation = checkpointRotation;
-        
     }
 }

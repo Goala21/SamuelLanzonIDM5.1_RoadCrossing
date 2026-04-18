@@ -76,6 +76,9 @@ PrefabInstance:
       addedObject: {fileID: 8009784256395754689}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 119c2f5f9827c3a44be4bf53d05f39e9, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 5140303834858421751}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 119c2f5f9827c3a44be4bf53d05f39e9, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 9045445962535860269}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 119c2f5f9827c3a44be4bf53d05f39e9, type: 3}
       insertIndex: -1
@@ -135,6 +138,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5140303834858421751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8789879884931532321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b22c5312fda2edd41abf5263972b9eed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChaserKill
 --- !u!114 &9045445962535860269
 MonoBehaviour:
   m_ObjectHideFlags: 0

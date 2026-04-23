@@ -26,12 +26,21 @@ public class Movement : MonoBehaviour
         
         if (Keyboard.current.spaceKey.isPressed && isGrounded)
         {
-            Myrigidbody.AddForce(transform.forward * 60 + transform.up * 50, ForceMode.Impulse);
+            Myrigidbody.AddForce((transform.forward + transform.up).normalized * speed, ForceMode.Impulse);
             isGrounded = false;
         }
         
         
-        Myrigidbody.AddForce(direction * speed * Time.deltaTime);
-        Myrigidbody.AddTorque(Vector3.back * rotationAngle * rotationSpeed * Time.deltaTime);
+        // Myrigidbody.AddForce(direction * speed * Time.deltaTime);
+        // Myrigidbody.AddTorque(Vector3.back * rotationAngle * rotationSpeed * Time.deltaTime);
+    }
+
+    private void FixedUpdate()
+    {
+        if (Myrigidbody.linearVelocity.y < 0)
+        {
+            // Falling: apply extra downward gravity
+            Myrigidbody.linearVelocity += Vector3.up * Physics.gravity.y * (22 - 1) * Time.fixedDeltaTime;
+        }
     }
 }

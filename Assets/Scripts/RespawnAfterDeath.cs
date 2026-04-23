@@ -9,7 +9,7 @@ public class RespawnAfterDeath : MonoBehaviour
     public void OnCollisionEnter(Collision other)
         
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.CompareTag("Player"))
         {
             other.gameObject.GetComponent<Health>().TakeDamage();
 

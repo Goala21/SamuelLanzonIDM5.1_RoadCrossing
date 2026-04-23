@@ -17,7 +17,7 @@ public class Score : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Collectible") && gameObject.CompareTag("Player"))
+        if (other.CompareTag("Collectible"))
         {
             value = value + 1;
             Debug.Log("Score increased to" + value);
@@ -30,6 +30,8 @@ public class Score : MonoBehaviour
             {
                 enemySpawner.isSpawning = true;
             }
+            
+            other.gameObject.SetActive(false);
         }    
     }
 

@@ -1,13 +1,22 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Random = System.Random;
 
 public class Movement : MonoBehaviour
 {
+    [Header("sounds")]
+    public AudioClip jumpSound;
+    
+    
     public Rigidbody Myrigidbody;
     public float rotationSpeed = 150f;
     public float speed = 200f;
     private bool isGrounded = true;
+    private bool jumpRequested = false;
+    public AudioSource myAudioSource;
+    public AudioClip[] jumpSounds;
+    
 
     private void OnCollisionEnter(Collision other)
     {
@@ -17,19 +26,15 @@ public class Movement : MonoBehaviour
             isGrounded = true;
     }
 
-
-    // Update is called once per frame
     void Update()
     {
         Vector3 direction = Vector3.zero;
         float rotationAngle = 0f;
         
-        if (Keyboard.current.spaceKey.isPressed && isGrounded)
+        if (Keyboard.current.spaceKey.wasPressedThisFrame && isGrounded)
         {
-            Myrigidbody.AddForce((transform.forward + transform.up).normalized * speed, ForceMode.Impulse);
-            isGrounded = false;
+            jumpRequested = true;
         }
-        
         
         // Myrigidbody.AddForce(direction * speed * Time.deltaTime);
         // Myrigidbody.AddTorque(Vector3.back * rotationAngle * rotationSpeed * Time.deltaTime);
@@ -37,9 +42,17 @@ public class Movement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (jumpRequested && isGrounded)
+        {
+            Myrigidbody.AddForce((transform.forward + transform.up).normalized * speed, ForceMode.Impulse);
+            isGrounded = false;
+            jumpRequested = false;
+            int idx = new Random().Next(0, jumpSounds.Length);
+            myAudioSource.PlayOneShot(jumpSounds[idx]);
+        }
+
         if (Myrigidbody.linearVelocity.y < 0)
         {
-            // Falling: apply extra downward gravity
             Myrigidbody.linearVelocity += Vector3.up * Physics.gravity.y * (22 - 1) * Time.fixedDeltaTime;
         }
     }

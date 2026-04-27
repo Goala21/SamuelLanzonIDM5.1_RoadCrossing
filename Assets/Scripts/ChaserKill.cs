@@ -17,6 +17,7 @@ public class ChaserKill : MonoBehaviour
         {
             gameOverScreen.SetActive(true);
             Destroy(other.gameObject);
+            Time.timeScale = 0.0000001f;
         }
     }
 }

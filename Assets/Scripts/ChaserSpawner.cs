@@ -24,7 +24,7 @@ public class ChaserSpawner : MonoBehaviour
 
     private System.Collections.IEnumerator SpawnAfterDelay(int mapIndex)
     {
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(5f);
         currentChaser = Instantiate(chaserPrefab, spawnPoints[mapIndex].position, spawnPoints[mapIndex].rotation);
     }
 }

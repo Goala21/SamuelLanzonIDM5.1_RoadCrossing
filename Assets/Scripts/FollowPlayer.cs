@@ -6,6 +6,7 @@ public class FollowPlayer : MonoBehaviour
     private Transform player;
     private Animator animator;
     private Rigidbody myRigidBody;
+    
 
     public float speed = 5f;
 
@@ -17,6 +18,7 @@ public class FollowPlayer : MonoBehaviour
         myRigidBody = GetComponent<Rigidbody>();
         
         animator.SetBool("isWalking", true);
+        
     }
 
     void FixedUpdate()

@@ -15,8 +15,13 @@ public class Movement : MonoBehaviour
     private bool isGrounded = true;
     private bool jumpRequested = false;
     public AudioSource myAudioSource;
-    public AudioClip[] jumpSounds;
-    
+    private ParticleSystem myParticleSystem;
+
+    private void Start()
+    {
+        myParticleSystem = transform.Find("Dirt").GetComponent<ParticleSystem>();
+        myParticleSystem.Stop();
+    }
 
     private void OnCollisionEnter(Collision other)
     {
@@ -26,34 +31,36 @@ public class Movement : MonoBehaviour
             isGrounded = true;
     }
 
-    void Update()
-    {
-        Vector3 direction = Vector3.zero;
-        float rotationAngle = 0f;
-        
-        if (Keyboard.current.spaceKey.wasPressedThisFrame && isGrounded)
-        {
-            jumpRequested = true;
-        }
-        
-        // Myrigidbody.AddForce(direction * speed * Time.deltaTime);
-        // Myrigidbody.AddTorque(Vector3.back * rotationAngle * rotationSpeed * Time.deltaTime);
-    }
-
     private void FixedUpdate()
     {
-        if (jumpRequested && isGrounded)
-        {
-            Myrigidbody.AddForce((transform.forward + transform.up).normalized * speed, ForceMode.Impulse);
-            isGrounded = false;
-            jumpRequested = false;
-            int idx = new Random().Next(0, jumpSounds.Length);
-            myAudioSource.PlayOneShot(jumpSounds[idx]);
-        }
+        // if (Myrigidbody.linearVelocity.y < 0)
+        // {
+        //     Myrigidbody.linearVelocity += Vector3.up * Physics.gravity.y * (22 - 1) * Time.fixedDeltaTime;
+        // }
+    }
 
-        if (Myrigidbody.linearVelocity.y < 0)
+    private void OnJump(InputValue value)
+    {
+        if (value.isPressed)
         {
-            Myrigidbody.linearVelocity += Vector3.up * Physics.gravity.y * (22 - 1) * Time.fixedDeltaTime;
+            Myrigidbody.linearVelocity = transform.forward * speed;
+            myAudioSource.Play();
+            myParticleSystem.Play();
         }
+        else
+        {
+            Myrigidbody.linearVelocity = Vector3.zero;
+            myParticleSystem.Stop();
+            myAudioSource.Stop();
+        }
+        
+        // if (isGrounded)
+        // {
+        //     Myrigidbody.linearVelocity = (transform.forward + transform.up).normalized * speed;
+        //     isGrounded = false;
+        //     jumpRequested = false;
+        //     int idx = new Random().Next(0, jumpSounds.Length);
+        //     myAudioSource.PlayOneShot(jumpSounds[idx]);
+        // }
     }
 }

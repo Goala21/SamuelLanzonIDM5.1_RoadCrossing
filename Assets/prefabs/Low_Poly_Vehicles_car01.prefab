@@ -131,6 +131,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 467678d741bbcd648b725e391bb9f4ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KillPlayer
+  hitSound: {fileID: 8300000, guid: 902828a83676948b2a085a2c006596fd, type: 3}
+  hitSource: {fileID: 0}
 --- !u!114 &8602485558187554181
 MonoBehaviour:
   m_ObjectHideFlags: 0

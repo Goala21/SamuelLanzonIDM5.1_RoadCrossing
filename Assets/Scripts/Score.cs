@@ -31,7 +31,6 @@ public class Score : MonoBehaviour
                 enemySpawner.isSpawning = true;
             }
             
-            other.gameObject.SetActive(false);
         }    
     }
 

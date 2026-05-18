@@ -162,10 +162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f49563f3dd4475a40837be4621ccd7ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FollowPlayer
-  myAudioSource: {fileID: 0}
-  walkingClips: []
-  walkingSound: {fileID: 8300000, guid: b118f4aa10fee7647a445137ffbb59cb, type: 3}
-  speed: 5
+  speed: 8
 --- !u!65 &-5750411656115817896
 BoxCollider:
   m_ObjectHideFlags: 0

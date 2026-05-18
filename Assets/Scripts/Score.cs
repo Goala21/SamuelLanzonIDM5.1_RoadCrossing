@@ -4,34 +4,36 @@ using TMPro;
 
 public class Score : MonoBehaviour
 {
-    public float value = 0;
-    public TMP_Text scoreText;
+    public TextMeshProUGUI timerText;
+    private float elapsedTime = 0f;
     private Vector3 checkpointPosition;
     private Quaternion checkpointRotation;
     private EnemySpawner enemySpawner;
 
     void Start()
     {
-        enemySpawner = FindObjectOfType<EnemySpawner>(); // Finds it automatically!
+        enemySpawner = FindObjectOfType<EnemySpawner>();
+    }
+
+    void Update()
+    {
+        elapsedTime += Time.deltaTime;
+        timerText.text = "Score: " + Mathf.FloorToInt(elapsedTime).ToString();
     }
 
     public void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Collectible"))
         {
-            value = value + 1;
-            Debug.Log("Score increased to" + value);
-            scoreText.text = $"score: {value:0}";
-            
             checkpointPosition = other.transform.position;
             checkpointRotation = other.transform.rotation;
-            
+
             if (enemySpawner != null)
             {
+                
                 enemySpawner.isSpawning = true;
             }
-            
-        }    
+        }
     }
 
     public void CheckpointRespawn()

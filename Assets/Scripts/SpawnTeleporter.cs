@@ -20,13 +20,6 @@ public class SpawnTeleporter : MonoBehaviour
     {
         isTeleporting = true;
 
-        Rigidbody rb = other.GetComponent<Rigidbody>();
-        if (rb != null)
-        {
-            rb.linearVelocity = Vector3.zero;
-            rb.angularVelocity = Vector3.zero;
-        }
-
         yield return new WaitForSeconds(0.1f);
 
         // Pick a random map
